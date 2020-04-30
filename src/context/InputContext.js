@@ -27,8 +27,13 @@ export default function InputContext({children}) {
         }
     }
 
+    const removeItem = (id, type) => {
+        items[type].splice(items[type].findIndex(item => item.id === id), 1);
+        setItems({exp: items.exp, inc: items.inc});
+    }
+
     return (
-        <inputContext.Provider value={{inputValue, setInputValue, inputDescription, setInputDescription, addExpenses, addIncome, items}}>
+        <inputContext.Provider value={{inputValue, setInputValue, inputDescription, setInputDescription, addExpenses, addIncome, removeItem, items}}>
             {children}
         </inputContext.Provider>
     )

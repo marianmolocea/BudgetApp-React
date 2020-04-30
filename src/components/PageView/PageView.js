@@ -6,7 +6,7 @@ import Item from '../Item/Item';
 
 export default function PageView() {
 
-    let {items: {exp, inc}} = useContext(inputContext)
+    let {items: {exp, inc}, removeItem} = useContext(inputContext)
 
     return (
         <div className="PageView">
@@ -18,13 +18,13 @@ export default function PageView() {
                 <div className="expenses">
                     <h2>Expenses</h2>
                     {
-                        exp.map((item, index) => <Item key={item.description + index} description={item.description} value={item.value} />)
+                        exp.map(item => <Item key={item.id} id={item.id} description={item.description} value={item.value} type="exp" removeItem={removeItem}/>)
                     }
                 </div>
                 <div className="income">
                     <h2>Income</h2>
                     {
-                        inc.map((item, index) => <Item key={item.description + index} description={item.description} value={item.value} />)
+                        inc.map(item => <Item key={item.id} id={item.id} description={item.description} value={item.value} type="inc" removeItem={removeItem}/>)
                     }
                 </div>
             </div>
