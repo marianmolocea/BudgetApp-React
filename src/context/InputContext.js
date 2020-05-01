@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 import { v4 as uniqId } from 'uuid';
 
 export const inputContext = createContext();
@@ -12,16 +12,9 @@ export default function InputContext({children}) {
 
     const valuesExists = () => newItem.description && newItem.value ? true : false;
 
-    const addExpenses = () => {
+    const addItem = (type) => {
         if(valuesExists()) {
-            setItems({exp: [...items.exp, newItem], inc: items.inc});
-            setInputValue('');
-            setInputDescription('');
-        }
-    }
-    const addIncome = () => {
-        if(valuesExists()) {
-            setItems({exp: items.exp, inc: [...items.inc, newItem]});
+            items[type].push(newItem)
             setInputValue('');
             setInputDescription('');
         }
@@ -33,7 +26,7 @@ export default function InputContext({children}) {
     }
 
     return (
-        <inputContext.Provider value={{inputValue, setInputValue, inputDescription, setInputDescription, addExpenses, addIncome, removeItem, items}}>
+        <inputContext.Provider value={{inputValue, setInputValue, inputDescription, setInputDescription, addItem, removeItem, items}}>
             {children}
         </inputContext.Provider>
     )

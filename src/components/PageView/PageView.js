@@ -6,7 +6,7 @@ import Item from '../Item/Item';
 
 export default function PageView() {
 
-    let {items: {exp, inc}, removeItem} = useContext(inputContext)
+    let {items: {exp, inc} ,removeItem} = useContext(inputContext);
 
     return (
         <div className="PageView">
