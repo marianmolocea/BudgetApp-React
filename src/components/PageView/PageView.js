@@ -8,6 +8,7 @@ export default function PageView() {
 
     let {items: {exp, inc} ,removeItem} = useContext(inputContext);
 
+    
     return (
         <div className="PageView">
             <div className="header">

@@ -23,6 +23,7 @@ export default function InputContext({children}) {
     const removeItem = (id, type) => {
         items[type].splice(items[type].findIndex(item => item.id === id), 1);
         setItems({exp: items.exp, inc: items.inc});
+        localStorage.items = items;
     }
 
     return (
