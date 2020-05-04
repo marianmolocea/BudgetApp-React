@@ -1,14 +1,1 @@
-{
-    "items" : {
-        "expenses": [
-            {"id": "22", "description": "car", "value": 400},
-            {"id": "23", "description": "travel", "value": 600},
-            {"id": "25", "description": "jacket", "value": 30}
-        ],
-        "incomes": [
-            {"id": "12", "description": "salary", "value": 400},
-            {"id": "13", "description": "divident", "value": 600},
-            {"id": "14", "description": "loto", "value": 30}
-        ]
-    }
-}
+{"items":{"expenses":[{"id":"22","description":"car","value":400},{"id":"23","description":"travel","value":600},{"id":"25","description":"jacket","value":30},{"id":"10572a6e-7a15-4712-84e3-9c5fad0988c4","description":"a","value":"2"},{"id":"c675d775-19cd-47f8-8c6d-7d24653c2282","description":"test3","value":"123"},{"id":"61fdaf3b-a8a4-4bea-8ab9-88a6ae7c74c9","description":"expenses","value":"31"}],"incomes":[{"id":"12","description":"salary","value":400},{"id":"13","description":"divident","value":600},{"id":"14","description":"loto","value":30},{"id":"65fdb6dc-6dbd-4711-a105-a363b31d97b0","description":"inceom","value":"123"}]}}

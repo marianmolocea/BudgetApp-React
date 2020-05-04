@@ -2,6 +2,7 @@ const fs = require('fs');
 const express = require('express');
 const app = express();
 const port = 3001;
+const path = require('path');
 
 const inputData = require(`../data/inputData.json`);
 
@@ -11,6 +12,7 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
   });
+
 
 app.get('/', (req, res) => res.send('Hello Marian!!!!'));
 app.get('/api/inputdata', (req, res) => {
@@ -23,18 +25,14 @@ app.get('/api/inputdata/:type/:id', (req, res) => {
     res.send(selectedItem)
 });
 
-app.post('/api/inputdata/expenses', (req, res) => {
-    console.log(req.params)
+app.post('/api/inputdata/:type', (req, res) => {
     const newInput = Object.assign({}, req.body);
-    console.log(req.body)
-    inputData.items.expenses.push(newInput);
-    fs.writeFile(`../data/inputData.json`, JSON.stringify(inputData), err => {
+    inputData.items[req.params.type].push(newInput);
+    fs.writeFile(path.join(__dirname, '../data/inputData.json'), JSON.stringify(inputData), err => {
         res.status(201).json({
             status: "success"
         })
     })
 })
-
-app.delete('/api/inputdata/expenses')
 
 app.listen(port, () => console.log(`Server started on port: ${port}`))
