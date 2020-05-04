@@ -1,6 +1,14 @@
 {
     "items" : {
-        "expenses": [],
-        "incomes": []
+        "expenses": [
+            {"id": "22", "description": "car", "value": 400},
+            {"id": "23", "description": "travel", "value": 600},
+            {"id": "25", "description": "jacket", "value": 30}
+        ],
+        "incomes": [
+            {"id": "12", "description": "salary", "value": 400},
+            {"id": "13", "description": "divident", "value": 600},
+            {"id": "14", "description": "loto", "value": 30}
+        ]
     }
 }
