@@ -6,7 +6,8 @@ export const inputContext = createContext();
 export default function InputContext({children}) {
     let [inputValue, setInputValue] = useState('');
     let [inputDescription, setInputDescription] = useState('');
-    let [items, setItems] = useState({exp: [], inc: []})
+    let [items, setItems] = useState('');
+    let [isLoaded, setIsLoaded] = useState(false)
 
     let newItem = {id: uniqId(), description: inputDescription, value: inputValue};
 
@@ -25,6 +26,17 @@ export default function InputContext({children}) {
         setItems({exp: items.exp, inc: items.inc});
         localStorage.items = items;
     }
+
+    useEffect(() => {
+        if(!isLoaded) {
+            (async () => {
+                const response = await fetch('http://localhost:3001/api/inputdata');
+                const inputData = await response.json();
+                setItems(inputData)
+                setIsLoaded(true)
+            })()
+        }
+    }, [isLoaded, items])
 
     return (
         <inputContext.Provider value={{inputValue, setInputValue, inputDescription, setInputDescription, addItem, removeItem, items}}>
