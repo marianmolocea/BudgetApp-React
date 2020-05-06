@@ -5,16 +5,13 @@ export const inputContext = createContext();
 
 export default function InputContext({children}) {
     let [inputValue, setInputValue] = useState('');
-    let [inputDescription, setInputDescription] = useState('');
+    let [inputName, setInputName] = useState('');
     let [items, setItems] = useState('');
     let [isLoaded, setIsLoaded] = useState(false)
 
-    let newItem = {id: uniqId(), description: inputDescription, value: inputValue};
-
-    const valuesExists = () => newItem.description && newItem.value ? true : false;
-
     const addItem = (type) => {
-        if(valuesExists()) {
+        let newItem = {type, inputName, inputValue};
+        if(newItem.inputName && newItem.inputValue) {
             fetch(`http://localhost:3001/api/inputdata/${type}`, {
                 method: "POST",
                 headers: {'Content-Type': 'application/json'},
@@ -22,7 +19,7 @@ export default function InputContext({children}) {
             });
             setIsLoaded(false)
             setInputValue('');
-            setInputDescription('');
+            setInputName('');
         }
     }
 
@@ -44,7 +41,7 @@ export default function InputContext({children}) {
     }, [isLoaded, items])
 
     return (
-        <inputContext.Provider value={{inputValue, setInputValue, inputDescription, setInputDescription, addItem, removeItem, items}}>
+        <inputContext.Provider value={{inputValue, setInputValue, inputName, setInputName, addItem, removeItem, items}}>
             {children}
         </inputContext.Provider>
     )
