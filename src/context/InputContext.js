@@ -10,7 +10,7 @@ export default function InputContext({children}) {
 
     const addItem = (type) => {
         let newItem = {type, inputName, inputValue};
-        if(newItem.inputName && newItem.inputValue) {
+        if(newItem.inputName && newItem.inputValue > 0) {
             fetch(`http://localhost:3001/api/inputdata`, {
                 method: "POST",
                 headers: {'Content-Type': 'application/json'},
@@ -19,6 +19,8 @@ export default function InputContext({children}) {
             setIsLoaded(false)
             setInputValue('');
             setInputName('');
+        } else {
+            alert("Invalid input values. Please check if you entered valid input values!")
         }
     }
 

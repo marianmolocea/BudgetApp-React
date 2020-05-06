@@ -1,14 +1,10 @@
-import React, { useContext } from 'react';
-import { inputContext } from '../../context/InputContext';
+import React from 'react';
 import './PageView.css'
 import Input from '../Input/Input'
-import Item from '../Item/Item';
+import Expenses from '../Expenses/Expenses'
+import Incomes from '../Incomes/Incomes';
 
-export default function PageView() {
-
-    let {items, removeItem} = useContext(inputContext);
-
-    
+export default function PageView() {   
     return (
         <div className="PageView">
             <div className="header">
@@ -16,38 +12,8 @@ export default function PageView() {
                 <Input />
             </div>
             <div className="container">
-                <div className="expenses">
-                    <h2>Expenses</h2>
-                    {
-                        items.length && items.map(item => (
-                            item.type === 'expense' && 
-                            <Item 
-                                key={item._id} 
-                                id={item._id} 
-                                description={item.inputName} 
-                                value={item.inputValue} 
-                                type={item.type} 
-                                removeItem={removeItem}
-                            />
-                        ))
-                    }
-                </div>
-                <div className="income">
-                    <h2>Income</h2>
-                    {
-                        items.length && items.map(item => (
-                            item.type === 'income' && 
-                            <Item 
-                                key={item._id} 
-                                id={item._id} 
-                                description={item.inputName} 
-                                value={item.inputValue} 
-                                type={item.type} 
-                                removeItem={removeItem}
-                            />
-                        ))
-                    }
-                </div>
+                <Expenses />
+                <Incomes />
             </div>
         </div>
     )
