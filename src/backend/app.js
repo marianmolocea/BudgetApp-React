@@ -1,7 +1,6 @@
 const fs = require('fs');
 const express = require('express');
 const app = express();
-const port = 3001;
 const path = require('path');
 
 const inputData = require(`../data/inputData.json`);
@@ -35,4 +34,4 @@ app.post('/api/inputdata/:type', (req, res) => {
     })
 })
 
-app.listen(port, () => console.log(`Server started on port: ${port}`))
+module.exports = app;
