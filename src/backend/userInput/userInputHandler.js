@@ -1,6 +1,3 @@
-const fs = require('fs');
-const path = require('path')
-const inputData = require(`../../data/inputData.json`);
 const Item = require('./userInputSchema')
 
 exports.createNewItem = async (req, res) => {
@@ -18,10 +15,73 @@ exports.createNewItem = async (req, res) => {
             message: err
         })
     }
-
 }
 
-exports.getAllItems = (req, res) => {
-    req.header('Content-Type: application/json')
-    res.send(inputData.items)
+exports.getAllItems = async (req, res) => {
+    try {
+        const items = await Item.find()
+        res.status(200).json({
+            status: "success",
+            data: {
+                items,
+            }
+        })
+    } catch (err) {
+        res.status(400).json({
+            status: "fail",
+            message: err
+        })
+    }
+}
+
+exports.getItem = async (req, res) => {
+    try {
+        const item = await Item.findById(req.params.id)
+        res.status(200).json({
+            status: "success",
+            data: {
+                item,
+            }
+        })
+    } catch (err) {
+        res.status(400).json({
+            status: "fail",
+            message: err
+        })
+    }
+}
+
+exports.updateItem = async (req, res) => {
+    try {
+        const item = await Item.findByIdAndUpdate(req.params.id, req.body, {
+            new: true,
+            runValidators: true
+        });
+        res.status(200).json({
+            status: "success",
+            data: {
+                item,
+            }
+        })
+    } catch (err) {
+        res.status(404).json({
+            status: "fail",
+            message: err
+        })
+    }
+}
+
+exports.deleteItem = async (req, res) => {
+    try {
+        await Item.findByIdAndDelete(req.params.id);
+        res.status(204).json({
+            status: "success",
+            data: null
+        })
+    } catch (err) {
+        res.status(404).json({
+            status: "fail",
+            message: err
+        })
+    }
 }

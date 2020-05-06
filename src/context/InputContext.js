@@ -1,5 +1,4 @@
 import React, { createContext, useState, useEffect } from 'react';
-import { v4 as uniqId } from 'uuid';
 
 export const inputContext = createContext();
 
@@ -12,7 +11,7 @@ export default function InputContext({children}) {
     const addItem = (type) => {
         let newItem = {type, inputName, inputValue};
         if(newItem.inputName && newItem.inputValue) {
-            fetch(`http://localhost:3001/api/inputdata/${type}`, {
+            fetch(`http://localhost:3001/api/inputdata`, {
                 method: "POST",
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(newItem)
@@ -23,18 +22,19 @@ export default function InputContext({children}) {
         }
     }
 
-    const removeItem = (id, type) => {
-        items[type].splice(items[type].findIndex(item => item.id === id), 1);
-        setItems({exp: items.exp, inc: items.inc});
-        localStorage.items = items;
+    const removeItem = (id) => {
+        fetch(`http://localhost:3001/api/inputdata/${id}`, {
+            method: 'DELETE',
+        })
+        setIsLoaded(false);
     }
 
     useEffect(() => {
         if(!isLoaded) {
             (async () => {
                 const response = await fetch('http://localhost:3001/api/inputdata');
-                const inputData = await response.json();
-                setItems(inputData)
+                const userItems = await response.json();
+                setItems(userItems.data.items)
                 setIsLoaded(true)
             })()
         }

@@ -6,7 +6,7 @@ import Item from '../Item/Item';
 
 export default function PageView() {
 
-    let {items: {expenses, incomes}, removeItem} = useContext(inputContext);
+    let {items, removeItem} = useContext(inputContext);
 
     
     return (
@@ -19,13 +19,33 @@ export default function PageView() {
                 <div className="expenses">
                     <h2>Expenses</h2>
                     {
-                        expenses && expenses.map(item => <Item key={item.id} id={item.id} description={item.description} value={item.value} type="exp" removeItem={removeItem}/>)
+                        items.length && items.map(item => (
+                            item.type === 'expense' && 
+                            <Item 
+                                key={item._id} 
+                                id={item._id} 
+                                description={item.inputName} 
+                                value={item.inputValue} 
+                                type={item.type} 
+                                removeItem={removeItem}
+                            />
+                        ))
                     }
                 </div>
                 <div className="income">
                     <h2>Income</h2>
                     {
-                        incomes && incomes.map(item => <Item key={item.id} id={item.id} description={item.description} value={item.value} type="inc" removeItem={removeItem}/>)
+                        items.length && items.map(item => (
+                            item.type === 'income' && 
+                            <Item 
+                                key={item._id} 
+                                id={item._id} 
+                                description={item.inputName} 
+                                value={item.inputValue} 
+                                type={item.type} 
+                                removeItem={removeItem}
+                            />
+                        ))
                     }
                 </div>
             </div>
