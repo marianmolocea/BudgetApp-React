@@ -37,10 +37,12 @@ export default function InputContext({children}) {
                 const response = await fetch('http://localhost:3001/api/inputdata');
                 const userItems = await response.json();
                 setItems(userItems.data.items)
+                console.log("setItems")
                 setIsLoaded(true)
+                console.log("setIsLoaded")
             })()
         }
-    }, [isLoaded, items])
+    }, [isLoaded])
 
     return (
         <inputContext.Provider value={{inputValue, setInputValue, inputName, setInputName, addItem, removeItem, items}}>
