@@ -26,3 +26,15 @@
 .Item.income {
     border-bottom: 1px solid teal;
 }
+
+.Item .close {
+    border: none;
+    background: none;
+    font-size: 1.3em;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.Item .close:hover {
+    color: crimson;
+}

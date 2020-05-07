@@ -13,8 +13,8 @@ export default function PageView() {
                 <Input />
             </div>
             <div className="container">
-                <Expenses />
                 <Incomes />
+                <Expenses />
             </div>
         </div>
     )

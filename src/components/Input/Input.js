@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { inputContext } from '../../context/InputContext'
 import './Input.css'
+import {AiOutlinePlusCircle, AiOutlineMinusCircle} from 'react-icons/ai'
 
 export default function Input() {
 
@@ -24,16 +25,16 @@ export default function Input() {
             />
             <div className="btn-container">
                 <button 
-                    className="expense-btn" 
-                    onClick={() => addItem('expense')}
-                >
-                    Add Expense
-                </button>
-                <button 
                     className="income-btn" 
                     onClick={() => addItem('income')}
                 >
-                    Add Income
+                    <span>Add Income</span><AiOutlinePlusCircle />
+                </button>
+                <button 
+                    className="expense-btn" 
+                    onClick={() => addItem('expense')}
+                >
+                   <span>Add Expense</span><AiOutlineMinusCircle />
                 </button>
             </div>
         </div>
