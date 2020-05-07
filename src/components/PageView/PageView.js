@@ -9,7 +9,6 @@ export default function PageView() {
     return (
         <div className="PageView">
             <div className="header">
-                <h1>Budget APP</h1>
                 <TotalBudget />
                 <Input />
             </div>

@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
 import { inputContext } from '../../context/InputContext';
 import Item from '../Item/Item';
+import './Expenses.css'
 
 
 export default function Expenses() {

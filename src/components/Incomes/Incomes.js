@@ -1,13 +1,14 @@
 import React, { useContext } from 'react';
 import { inputContext } from '../../context/InputContext';
 import Item from '../Item/Item';
+import './Incomes.css'
 
 export default function Incomes() {
   let { items, removeItem } = useContext(inputContext);
 
   return (
     <div className="Incomes">
-      <h2>Income</h2>
+      <h2>Incomes</h2>
       {items.length !== 0 &&
         items.map(
           (item) =>

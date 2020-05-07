@@ -6,10 +6,12 @@ export default function InputContext({children}) {
     let [inputValue, setInputValue] = useState('');
     let [inputName, setInputName] = useState('');
     let [items, setItems] = useState('');
-    let [isLoaded, setIsLoaded] = useState(false)
+    let [isLoaded, setIsLoaded] = useState(false);
+
+
 
     const addItem = (type) => {
-        let newItem = {type, inputName, inputValue};
+        let newItem = {type, inputName, inputValue: Math.round(inputValue * 100) / 100};
         if(newItem.inputName && newItem.inputValue > 0) {
             fetch(`http://localhost:3001/api/inputdata`, {
                 method: "POST",
@@ -37,9 +39,7 @@ export default function InputContext({children}) {
                 const response = await fetch('http://localhost:3001/api/inputdata');
                 const userItems = await response.json();
                 setItems(userItems.data.items)
-                console.log("setItems")
                 setIsLoaded(true)
-                console.log("setIsLoaded")
             })()
         }
     }, [isLoaded])

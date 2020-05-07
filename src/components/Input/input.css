@@ -1,0 +1,45 @@
+.Input {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.Input .description,
+.Input .value {
+    height: 20px;
+    padding: 10px;
+    margin-right: 10px;
+    font-size: 1em;
+    color: #333;
+}
+
+.Input .description {
+    width:300px;
+}
+
+.Input .value {
+    width:150px;
+}
+
+.Input .expense-btn, 
+.Input .income-btn {
+    border: none;
+    height: 44px;
+    padding: 10px;
+    min-width: 100px;
+    color: #eee;
+    cursor: pointer;
+    margin-right: 10px;
+    font-weight: 500;
+    font-size: 1em;
+}
+
+.Input .income-btn {
+    background-color: teal;
+}
+
+.Input .expense-btn {
+    background-color: crimson;
+}
