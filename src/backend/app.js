@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
-const inputRouter = require('./inputRoutes/inputRoutes')
+const inputRouter = require('./inputRoutes/inputRoutes');
+const userRouter = require('./userRoutes/userRoutes');
 
 app.use(express.json());
 app.use(function(req, res, next) {
@@ -12,4 +13,5 @@ app.use(function(req, res, next) {
   
 app.get('/', (req, res) => res.send('Welcome to the server side'));
 app.use('/api/inputdata', inputRouter);
+app.use('/api/users', userRouter);
 module.exports = app;

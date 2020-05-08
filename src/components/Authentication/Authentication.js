@@ -4,7 +4,7 @@ import SignUp from './SignUp/SignUp'
 
 export default function Authentication() {
     return (
-        <div>
+        <div className="Authentication">
             <SignIn />
         </div>
     )
