@@ -1,13 +1,13 @@
 import React from 'react';
-import './PageView.css'
+import './Dashboard.css'
 import Input from '../Input/Input'
 import Expenses from '../Expenses/Expenses'
 import Incomes from '../Incomes/Incomes';
 import TotalBudget from '../TotalBudget/TotalBudget'
 
-export default function PageView() {   
+export default function Dashboard() {   
     return (
-        <div className="PageView">
+        <div className="Dashboard">
             <div className="header">
                 <TotalBudget />
                 <Input />

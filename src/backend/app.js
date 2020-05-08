@@ -10,7 +10,6 @@ app.use(function(req, res, next) {
     next();
   });
   
-  app.get('/', (req, res) => res.send('Welcome to the server side'));
-  app.use('/api/inputdata', inputRouter);
-
+app.get('/', (req, res) => res.send('Welcome to the server side'));
+app.use('/api/inputdata', inputRouter);
 module.exports = app;

@@ -36,8 +36,9 @@ export default function TotalBudget() {
             </div>
             <div className="container">
                 <div className="totals incomes">Total incomes: £{incomes}</div>
-                <div className="totals expenses">Total expenses: -£{expenses}</div>
+                <div className="totals expenses">Total expenses: {total < 0 && '-'}£{expenses}</div>
             </div>
+            
         </div>
     )
 }

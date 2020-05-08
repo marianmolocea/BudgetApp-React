@@ -1,17 +1,17 @@
 const express = require('express');
-const userInputHandler = require('../userInput/userInputHandler')
+const inputsHandler = require('../Inputs/InputsHandler')
 
 const router = express.Router();
 
 router
     .route('/')
-    .get(userInputHandler.getAllItems)
-    .post(userInputHandler.createNewItem);
+    .get(inputsHandler.getAllItems)
+    .post(inputsHandler.createNewItem);
 
 router
     .route('/:id')
-    .get(userInputHandler.getItem)
-    .patch(userInputHandler.updateItem)
-    .delete( userInputHandler.deleteItem);
+    .get(inputsHandler.getItem)
+    .patch(inputsHandler.updateItem)
+    .delete( inputsHandler.deleteItem);
 
 module.exports = router

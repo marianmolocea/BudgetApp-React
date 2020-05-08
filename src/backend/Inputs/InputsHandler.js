@@ -1,4 +1,4 @@
-const Item = require('./userInputSchema')
+const Item = require('./InputsSchema')
 
 exports.createNewItem = async (req, res) => {
     try {
