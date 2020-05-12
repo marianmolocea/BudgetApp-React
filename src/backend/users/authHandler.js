@@ -33,7 +33,7 @@ exports.signUp = async (req, res) => {
     }
 }
 
-exports.logIn = async (req, res, next) => {
+/* exports.logIn = async (req, res, next) => {
     try {
         const {email, password} = req.body;
     
@@ -47,7 +47,6 @@ exports.logIn = async (req, res, next) => {
         }
 
         const token = signToken(user._id)
-        console.log('Successfully authentication')
         res.status(200).json({
             status: 'success',
             token
@@ -58,4 +57,4 @@ exports.logIn = async (req, res, next) => {
             message: err
         })
     }
-}
+} */
